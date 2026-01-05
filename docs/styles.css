@@ -6,23 +6,24 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
-    line-height: 1.8;
-    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', 'MS PGothic', sans-serif;
+    line-height: 1.9;
+    color: #1a1a1a;
     background-color: #f8f9fa;
+    font-weight: 500;
 }
 
 /* Container Layout */
 .container {
     display: flex;
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
     min-height: 100vh;
 }
 
 /* Left Column: Outline Navigation */
 .outline-nav {
-    width: 320px;
+    width: 280px;
     position: sticky;
     top: 0;
     height: 100vh;
@@ -30,6 +31,7 @@ body {
     background-color: #fff;
     border-right: 1px solid #e1e4e8;
     padding: 2rem 1.5rem;
+    flex-shrink: 0;
 }
 
 .outline-header h2 {
@@ -90,17 +92,18 @@ body {
 /* Right Column: Article Content */
 .article-content {
     flex: 1;
-    padding: 3rem;
+    padding: 3rem 4rem;
     background-color: #fff;
     margin-left: 2rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    max-width: 1200px;
 }
 
 #content {
-    max-width: 800px;
+    max-width: 100%;
 }
 
 /* Article Typography */
@@ -111,6 +114,7 @@ body {
     line-height: 1.3;
     border-bottom: 3px solid #0366d6;
     padding-bottom: 0.5rem;
+    font-weight: 700;
 }
 
 .article-content h2 {
@@ -120,37 +124,45 @@ body {
     color: #1a1a1a;
     line-height: 1.4;
     scroll-margin-top: 2rem;
+    font-weight: 700;
 }
 
 .article-content h3 {
     font-size: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    color: #2a2a2a;
+    color: #1a1a1a;
     scroll-margin-top: 2rem;
+    font-weight: 600;
 }
 
 .article-content h4 {
     font-size: 1.25rem;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
-    color: #3a3a3a;
+    color: #1a1a1a;
     scroll-margin-top: 2rem;
+    font-weight: 600;
 }
 
 .article-content p {
     margin-bottom: 1.25rem;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
+    color: #2c2c2c;
+    font-weight: 400;
 }
 
 .article-content ul,
 .article-content ol {
     margin-bottom: 1.25rem;
     padding-left: 2rem;
+    font-size: 1.05rem;
+    color: #2c2c2c;
 }
 
 .article-content li {
     margin-bottom: 0.5rem;
+    line-height: 1.8;
 }
 
 .article-content code {
