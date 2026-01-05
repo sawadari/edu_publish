@@ -22,9 +22,17 @@ let tocStructure = [];
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
+    // Initialize Mermaid
+    mermaid.initialize({
+        startOnLoad: false,
+        theme: 'default',
+        securityLevel: 'loose'
+    });
+
     await loadAllArticles();
     generateTOC();
     renderContent();
+    await renderMermaidDiagrams();
     setupScrollSpy();
 });
 
@@ -122,8 +130,33 @@ function generateTOC() {
             e.preventDefault();
             const targetId = link.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
+
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Scroll to the target element
+                const offset = 20; // Add some offset from top
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Update active state immediately
+                document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                // Expand subsections if clicking main article link
+                if (targetId.startsWith('article-') && !targetId.includes('-h')) {
+                    const articleId = targetId.replace('article-', '');
+                    const subsectionList = document.getElementById(`subsection-${articleId}`);
+                    if (subsectionList) {
+                        document.querySelectorAll('.toc-subsection').forEach(sub => {
+                            sub.classList.remove('expanded');
+                        });
+                        subsectionList.classList.add('expanded');
+                    }
+                }
             }
         });
     });
@@ -141,6 +174,28 @@ function renderContent() {
         articleSection.innerHTML = article.html;
         contentElement.appendChild(articleSection);
     });
+}
+
+// Render Mermaid diagrams
+async function renderMermaidDiagrams() {
+    const mermaidBlocks = document.querySelectorAll('code.language-mermaid, pre code.language-mermaid');
+
+    for (let i = 0; i < mermaidBlocks.length; i++) {
+        const block = mermaidBlocks[i];
+        const code = block.textContent;
+        const pre = block.closest('pre') || block.parentElement;
+
+        try {
+            const { svg } = await mermaid.render(`mermaid-${i}`, code);
+            const container = document.createElement('div');
+            container.className = 'mermaid-container';
+            container.innerHTML = svg;
+            pre.replaceWith(container);
+        } catch (error) {
+            console.error('Mermaid rendering error:', error);
+            // Keep the original code block if rendering fails
+        }
+    }
 }
 
 // Setup scroll spy

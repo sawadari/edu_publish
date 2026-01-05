@@ -243,6 +243,21 @@ body {
     }
 }
 
+/* Mermaid Diagrams */
+.mermaid-container {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    overflow-x: auto;
+    text-align: center;
+}
+
+.mermaid-container svg {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Scrollbar Styling */
 .outline-nav::-webkit-scrollbar {
     width: 8px;
