@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marpスライドレビュー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>スライド一覧</h2>
+      <ul id="slide-list"></ul>
+    </aside>
+
+    <main class="preview">
+      <div class="toolbar">
+        <button onclick="runStyleRector()" class="btn btn-primary">スタイル修正</button>
+        <button onclick="rebuild()" class="btn btn-secondary">リビルド</button>
+        <button onclick="openInBrowser()" class="btn btn-secondary">ブラウザで開く</button>
+      </div>
+
+      <iframe id="slide-preview"></iframe>
+
+      <div class="info">
+        <p id="current-slide-info">スライドを選択してください</p>
+      </div>
+    </main>
+
+    <aside class="comments">
+      <h3>コメント</h3>
+      <div class="slide-selector">
+        <label for="comment-slide-number">スライド番号</label>
+        <input type="number" id="comment-slide-number" min="1" value="1">
+      </div>
+
+      <div id="comment-list"></div>
+
+      <div class="comment-form">
+        <textarea id="new-comment" placeholder="コメントを入力してください"></textarea>
+        <button onclick="addComment()" class="btn btn-primary">コメント追加</button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

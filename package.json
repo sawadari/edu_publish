@@ -7,7 +7,9 @@
     "marp:build": "marp slides/presentations/sample.md -o slides/output/sample.html --html --allow-local-files",
     "marp:build:all": "marp slides/presentations/*.md --html --allow-local-files",
     "marp:watch": "marp -w slides/presentations/*.md --html --allow-local-files",
-    "marp:server": "marp -s slides/presentations/ --html --allow-local-files"
+    "marp:server": "marp -s slides/presentations/ --html --allow-local-files",
+    "feedback:serve": "npx http-server feedback -p 3000 -o",
+    "rector": "echo 'Use: /slide-style-rector [filename]' in Claude Code"
   },
   "keywords": [
     "marp",
