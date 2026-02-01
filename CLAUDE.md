@@ -155,6 +155,12 @@ Claude Code で以下のコマンドが使用可能:
 - `/security-scan` - セキュリティ脆弱性スキャン実行
 - `/agent-run` - Autonomous Agent実行（Issue自動処理パイプライン）
 
+### Marpスライドコマンド
+
+- `/marp-create` - 新規スライド作成
+- `/marp-build` - スライドをHTMLにビルド
+- `/marp-preview` - プレビューサーバー起動
+
 ## 識学理論（Shikigaku Theory）5原則
 
 1. **責任の明確化** - 各AgentがIssueに対する責任を負う
@@ -172,6 +178,68 @@ GITHUB_TOKEN=ghp_xxxxx
 # Anthropic API Key（必須 - Agent実行時）
 ANTHROPIC_API_KEY=sk-ant-xxxxx
 ```
+
+## Marpスライド作成
+
+### スタイルガイド
+
+- **参照**: `docs/slide-style-guide.md`
+- **パターン**: `slides/example.md` (10パターン)
+- **テーマ**: レクタースタイル（Rector Style）
+
+### カラーパレット
+
+- **濃紺** (Navy): `#1B4565`
+- **ティール** (Teal): `#3E9BA4`
+- **ルビーピンク** (Ruby): `#c70067` (対比・強調のみ)
+- **グレースケール**: gray-50/100/600/700/800
+
+ルール: 1スライドあたりアクセントカラーは1-2色まで
+
+### タイポグラフィ
+
+- `text-em-3xl`: 数値強調、インパクトのあるキーワード
+- `text-em-2xl`: パネル見出し、セクションタイトル
+- `text-em-xl`: サブ見出し
+- `text-em-lg`: 本文、リスト項目
+- `text-em-base`: 補足説明
+
+### 文体ルール
+
+#### ❌ 使用禁止
+
+**コロン（：）を使用しない**
+- ❌ 悪い例: `原則❶：自律性の最大化`
+- ✅ 良い例: `原則❶ 自律性の最大化`
+
+**感嘆符（！）や疑問符（？）を避ける**
+- ❌ 悪い例: `AIで開発が10倍速に！`
+- ✅ 良い例: `AIで開発が10倍速に`
+
+**装飾的な絵文字を避ける**
+- ❌ 悪い例: `🧩 問題領域の複雑さ`
+- ✅ 良い例: `問題領域の複雑さ`
+
+**色による強調は控えめに**
+- red-600、green-600などは避け、gray-600/gray-700を使用
+
+### スライド作成ワークフロー
+
+1. `/marp-create [ファイル名] [タイトル]` で新規作成
+2. `slides/example.md` のパターンから選択
+3. `docs/slide-style-guide.md` のルールに準拠
+4. `/marp-preview` でプレビュー確認
+5. `/marp-build` でHTML生成
+
+### npm スクリプト
+
+```bash
+npm run marp:build    # HTMLビルド
+npm run marp:watch    # 監視モード
+npm run marp:server   # プレビューサーバー
+```
+
+---
 
 ## サポート
 

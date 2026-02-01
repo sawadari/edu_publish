@@ -117,9 +117,50 @@ npx miyabi docs -y
 npx miyabi todos -y
 ```
 
+## Marpスライド作成環境
+
+このプロジェクトには、Marpを使用したプレゼンテーションスライド作成環境が統合されています。
+
+### 特徴
+
+- **レクタースタイル**: グレースケール基調 + 濃紺・ティールのアクセント
+- **10パターン**: よく使うレイアウトパターンを定義済み
+- **Tailwind CSS統合**: 柔軟なデザインカスタマイズ
+- **Claude Code連携**: `/marp-create`、`/marp-build`、`/marp-preview`コマンド
+
+### クイックスタート
+
+```bash
+# プレビューサーバー起動
+npm run marp:server
+
+# スライドをビルド
+npm run marp:build
+
+# 監視モード
+npm run marp:watch
+```
+
+### スライドの作成
+
+```
+/marp-create my-presentation "プレゼンテーションタイトル"
+```
+
+新規スライドが`slides/presentations/my-presentation.md`に作成されます。
+
+### 参照
+
+- **スタイルガイド**: [docs/slide-style-guide.md](docs/slide-style-guide.md)
+- **パターン集**: [slides/example.md](slides/example.md)
+- **サンプル**: [slides/presentations/sample.md](slides/presentations/sample.md)
+
+---
+
 ## 今後の予定
 
-- [ ] 講演スライドの追加
+- [x] Marpスライド作成環境（Phase 1完了）
+- [ ] スライドスキル実装（Phase 2）
 - [ ] サンプルコード・テンプレートの公開
 - [ ] ワークショップ資料の追加
 - [ ] 動画コンテンツへのリンク
